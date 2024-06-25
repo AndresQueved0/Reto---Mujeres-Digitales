@@ -1,0 +1,16 @@
+:root {
+    --success: #8661C1;
+}
+
+.btn {
+    background-color:  var(--success);
+
+}
+
+.btn:hover {
+    background-color:  var(--success);
+}
+
+.bg{
+    background-color: var(--success);
+}

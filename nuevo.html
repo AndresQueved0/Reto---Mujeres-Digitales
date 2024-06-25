@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Municipio</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Registro de Municipio</h1>
+        <form id="formularioMunicipio">
+            <div class="mb-3">
+                <label for="numeroManzanas" class="form-label">Número de Manzanas</label>
+                <input type="number" class="form-control" id="numeroManzanas" name="numeroManzanas" min="1" required>
+            </div>
+            <div id="manzanasContainer"></div>
+            <button type="submit" class="btn btn-primary">Registrar Municipio</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('numeroManzanas').addEventListener('input', function() {
+            const numeroManzanas = parseInt(this.value);
+            const manzanasContainer = document.getElementById('manzanasContainer');
+
+            // Limpiar campos anteriores
+            manzanasContainer.innerHTML = '';
+
+            // Crear nuevos campos
+            for (let i = 1; i <= numeroManzanas; i++) {
+                const div = document.createElement('div');
+                div.className = 'mb-3';
+                div.innerHTML = `
+                    <label for="manzana${i}" class="form-label">Manzana ${i}</label>
+                    <input type="text" class="form-control" id="manzana${i}" name="manzana${i}" required>
+                `;
+                manzanasContainer.appendChild(div);
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+<div class="container mt-5">
+    <h1 class="text-center">Registro de municipios</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="/ruta-para-enviar-formulario" method="POST">
+                <div class="mb-3">
+                    <label for="nombreMunicipio" class="form-label">Nombre del municipio</label>
+                    <input type="text" class="form-control" id="nombreMunicipio" name="nombreMunicipio" required>
+                </div>
+                <div class="mb-3">
+                    <label for="codigoPostal" class="form-label">Código Postal</label>
+                    <input type="text" class="form-control" id="codigoPostal" name="codigoPostal" required>
+                </div>
+            </div>
+                <div class="col-sm-6">
+                <div class="mb-3">
+                    <label for="poblacion" class="form-label">Población</label>
+                    <input type="number" class="form-control" id="poblacion" name="poblacion" required>
+                </div>
+                <div class="mb-3">
+                    <label for="superficie" class="form-label">Superficie (km²)</label>
+                    <input type="number" step="0.01" class="form-control" id="superficie" name="superficie" required>
+                </div> 
+                </div>  
+            <div class="col-sm-12 mt-5">
+                <h4 class="text-center">Registro de manzanas</h4>
+            </div>
+            <div class="col-sm-6">
+                <form action="/ruta-para-enviar-formulario" method="POST">
+                    <div class="mb-3">
+                        <label for="nombreMunicipio" class="form-label">Numero de las manzanas de cuidado</label>
+                        <input type="number" class="form-control" id="nombreMunicipio" name="nombreMunicipio" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="codigoPostal" class="form-label">Tipo de servicios de la manzanas</label>
+                        <input type="text" class="form-control" id="codigoPostal" name="codigoPostal" required>
+                    </div>
+                </div>
+                    <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="poblacion" class="form-label">Población</label>
+                        <input type="number" class="form-control" id="poblacion" name="poblacion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="superficie" class="form-label">Superficie (km²)</label>
+                        <input type="number" step="0.01" class="form-control" id="superficie" name="superficie" required>
+                    </div> 
+                    </div>
+        </form>
+        <button type="submit" class="btn btn-primary">Registrar municipio</button>
+    </div>
+    </div>
