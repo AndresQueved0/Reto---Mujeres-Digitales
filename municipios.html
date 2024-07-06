@@ -12,35 +12,55 @@
   <body>        
 
     <div class="d-flex" style="min-height: 100vh;">
-        <div id="sidebar-container" class="bg" style="width: 12%;">
-            <div class="logo">
-                <h2 class="text-light fw-bold ms-4 mt-4">Menu
-                </h2>
-            </div>
-            <ul class="sidebar-nav">
-                <li class="sidebar-item nav-link">
-                    <a href="municipios.html" class="sidebar-link text-light nav-link fs-5 mt-4">
-                        <i class="lni lni-home"></i>Registro de municipios
+        
+        <div class="wrapper">
+            <aside id="sidebar">
+                <div class="d-flex">
+                    <button class="toggle-btn" type="button">
+                        <i class="lni lni-grid-alt"></i>
+                    </button>
+                    <div class="sidebar-logo">
+                        <a href="Principal.html">Manzanas del Cuidado</a>
+                    </div>
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-item">
+                        <a href="Manzanas.html" class="sidebar-link">
+                            <i class="lni lni-user"></i>
+                            <span>Manzanas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Municipios.html" class="sidebar-link">
+                            <i class="lni lni-agenda"></i>
+                            <span>Municipios</span>
+                        </a>
+                    </li>
+    
+    
+                    <li class="sidebar-item">
+                        <a href="Servicios.html" class="sidebar-link">
+                            <i class="lni lni-popup"></i>
+                            <span>Servicios</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Registro_mujer_cuidadora.html" class="sidebar-link">
+                            <i class="lni lni-control-panel"></i>
+                            <span>Registro-Cuidadora</span>
+                        </a>
+                    </li>
+                </ul>
+    
+                <div class="sidebar-footer">
+                    <a href="index.html" class="sidebar-link">
+                        <i class="lni lni-exit"></i>
+                        <span>Cerrar Sesión</span>
                     </a>
-                </li>
-                <li class="sidebar-item nav-link">
-                    <a href="inicio.html" class="sidebar-link text-light nav-link fs-5 mt-4">
-                        <i class="lni lni-home"></i>Registros de las manzanas
-                    </a>
-                </li>
-                <li class="sidebar-item nav-link">
-                    <a href="inicio.html" class="sidebar-link text-light nav-link fs-5 mt-4">
-                        <i class="lni lni-home"></i>Registro de mujeres
-                    </a>
-                </li>
-                <li class="sidebar-item nav-link">
-                    <a href="inicio.html" class="sidebar-link text-light nav-link fs-5 mt-4">
-                        <i class="lni lni-home"></i>Inicio
-                    </a>
-                </li>
-            </ul>
-            </div>
-         
+                </div>
+            </aside>
+        </div>
+
         <div class="container mt-5">
             <h1>Registro de Municipio</h1>
             <form id="formularioMunicipio">
@@ -84,59 +104,7 @@
             </tbody>
         </table>
     </div>
-    
-        <script>
-            document.getElementById('numeroManzanas').addEventListener('input', function() {
-            const numeroManzanas = parseInt(this.value);
-            const manzanasContainer = document.getElementById('manzanasContainer');
-
-            // Limpiar campos anteriores
-            manzanasContainer.innerHTML = '';
-
-            // Crear nuevos campos
-            for (let i = 1; i <= numeroManzanas; i++) {
-                const div = document.createElement('div');
-                div.className = 'mb-3';
-                div.innerHTML = `
-                    <label for="manzana${i}" class="form-label">Manzana ${i}</label>
-                    <input type="text" class="form-control" id="manzana${i}" name="manzana${i}" required>
-                `;
-                manzanasContainer.appendChild(div);
-            }
-        });
-
-    
-
-    document.getElementById('agregarManzanaBtn').addEventListener('click', function() {
-    const numeroManzanas = parseInt(document.getElementById('numeroManzanas').value);
-    const tablaManzanas = document.getElementById('tablaManzanas').getElementsByTagName('tbody')[0];
-
-    // Recolectar datos de los campos generados y agregarlos a la tabla
-    for (let i = 1; i <= numeroManzanas; i++) {
-        const nombre = document.querySelector(`#manzana${i}[name='manzana${i}'][type='text']`).value;
-        const codigo = document.querySelector(`#manzana${i}[name='manzana${i}'][type='number']`).value;
-        const barrio = document.querySelector(`#manzana${i}[name='manzana${i}'][type='text']`).value;
-        const direccion = document.querySelector(`#manzana${i}[name='manzana${i}'][type='text']`).value;
-
-        // Crear una nueva fila en la tabla
-        let fila = tablaManzanas.insertRow();
-        let celda1 = fila.insertCell(0);
-        let celda2 = fila.insertCell(1);
-        let celda3 = fila.insertCell(2);
-        let celda4 = fila.insertCell(3);
-
-        // Agregar el texto a las celdas
-        celda1.textContent = nombre;
-        celda2.textContent = codigo;
-        celda3.textContent = barrio;
-        celda4.textContent = direccion;
-    }
-
-    // Limpiar campos anteriores
-    document.getElementById('manzanasContainer').innerHTML = '';
-    document.getElementById('numeroManzanas').value = ''; // Resetear el número de manzanas
-});
-        </script>
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   </body>
